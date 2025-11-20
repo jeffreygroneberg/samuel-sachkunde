@@ -51,13 +51,10 @@
       border-radius: 12px;
       border-left: 4px solid #667eea;
       overflow: hidden;
-      display: grid;
-      grid-template-rows: auto 0fr;
-      transition: grid-template-rows 0.3s ease;
     }
 
-    .topic-row.open {
-      grid-template-rows: auto 1fr;
+    .topic-row.open .topic-cards-wrapper {
+      max-height: 300px;
     }
 
     .topic-header {
@@ -91,7 +88,9 @@
     }
 
     .topic-cards-wrapper {
+      max-height: 0;
       overflow: hidden;
+      transition: max-height 0.3s ease;
     }
 
     .topic-cards {
@@ -199,6 +198,10 @@
         grid-template-columns: 1fr;
         gap: 0.8rem;
       }
+
+      .topic-row.open .topic-cards-wrapper {
+        max-height: 500px;
+      }
     }
 
     @media (max-width: 600px) {
@@ -213,6 +216,10 @@
 
       .topic-header {
         padding: 1rem;
+      }
+
+      .topic-row.open .topic-cards-wrapper {
+        max-height: 600px;
       }
     }
   </style>
