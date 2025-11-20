@@ -47,23 +47,55 @@
 
     .topic-row {
       margin-bottom: 1.5rem;
-      padding: 1.2rem;
       background: #f9f9f9;
       border-radius: 12px;
       border-left: 4px solid #667eea;
+      overflow: hidden;
+    }
+
+    .topic-header {
+      padding: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.2s ease;
+      user-select: none;
+    }
+
+    .topic-header:hover {
+      background: #f0f0f0;
     }
 
     .topic-title {
       font-size: 1.1rem;
       font-weight: 600;
       color: #444;
-      margin-bottom: 0.8rem;
+      margin: 0;
+    }
+
+    .topic-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .topic-row.open .topic-icon {
+      transform: rotate(180deg);
     }
 
     .topic-cards {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
+      padding: 0 1.2rem 1.2rem 1.2rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .topic-row.open .topic-cards {
+      max-height: 200px;
+      padding: 0 1.2rem 1.2rem 1.2rem;
     }
 
     .card {
@@ -164,6 +196,10 @@
         grid-template-columns: 1fr;
         gap: 0.8rem;
       }
+
+      .topic-row.open .topic-cards {
+        max-height: 500px;
+      }
     }
 
     @media (max-width: 600px) {
@@ -176,8 +212,12 @@
         font-size: 2rem;
       }
 
-      .topic-row {
+      .topic-header {
         padding: 1rem;
+      }
+
+      .topic-row.open .topic-cards {
+        max-height: 600px;
       }
     }
   </style>
@@ -190,7 +230,10 @@
 
     <!-- Blatt 1 -->
     <div class="topic-row">
-      <div class="topic-title">1. Die Geschichtsepochen</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">1. Die Geschichtsepochen</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <a href="blaetter/Blatt01.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
@@ -218,7 +261,10 @@
 
     <!-- Blatt 2 -->
     <div class="topic-row">
-      <div class="topic-title">2. Das Ritterturnier</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">2. Das Ritterturnier</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <div class="card reading-card" style="opacity: 0.5; cursor: not-allowed;">
           <span class="card-icon">📖</span>
@@ -246,7 +292,10 @@
 
     <!-- Blatt 3 -->
     <div class="topic-row">
-      <div class="topic-title">3. Die Ausbildung zum Ritter</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">3. Die Ausbildung zum Ritter</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <a href="blaetter/Blatt03.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
@@ -274,7 +323,10 @@
 
     <!-- Blatt 4 -->
     <div class="topic-row">
-      <div class="topic-title">4. Der Page und der Knappe</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">4. Der Page und der Knappe</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <a href="blaetter/Blatt04.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
@@ -302,7 +354,10 @@
 
     <!-- Blatt 5 -->
     <div class="topic-row">
-      <div class="topic-title">5. Leben auf der Burg</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">5. Leben auf der Burg</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <a href="blaetter/Blatt05.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
@@ -330,7 +385,10 @@
 
     <!-- Blatt 6 -->
     <div class="topic-row">
-      <div class="topic-title">6. Frauen im Mittelalter</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">6. Frauen im Mittelalter</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <a href="blaetter/Blatt06.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
@@ -358,7 +416,10 @@
 
     <!-- Blatt 7 -->
     <div class="topic-row">
-      <div class="topic-title">7. Das Wappen</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">7. Das Wappen</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <a href="blaetter/Blatt07.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
@@ -386,7 +447,10 @@
 
     <!-- Blatt 8 -->
     <div class="topic-row">
-      <div class="topic-title">8. Der Rittersaal</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">8. Der Rittersaal</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <a href="blaetter/Blatt08.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
@@ -414,7 +478,10 @@
 
     <!-- Blatt 9 -->
     <div class="topic-row">
-      <div class="topic-title">9. Das Schlafzimmer</div>
+      <div class="topic-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="topic-title">9. Das Schlafzimmer</div>
+        <span class="topic-icon">▼</span>
+      </div>
       <div class="topic-cards">
         <a href="blaetter/Blatt09.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
