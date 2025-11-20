@@ -90,14 +90,19 @@
     .topic-cards-wrapper {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0;
+    }
+
+    .topic-row.open .topic-cards-wrapper {
+      max-height: 300px;
+      padding: 0 1.2rem 1.2rem 1.2rem;
     }
 
     .topic-cards {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
-      padding: 0 1.2rem 1.2rem 1.2rem;
     }
 
     .card {
