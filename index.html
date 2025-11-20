@@ -51,6 +51,13 @@
       border-radius: 12px;
       border-left: 4px solid #667eea;
       overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+
+    .topic-row.open {
+      grid-template-rows: auto 1fr;
     }
 
     .topic-header {
@@ -83,18 +90,14 @@
       transform: rotate(180deg);
     }
 
+    .topic-cards-wrapper {
+      overflow: hidden;
+    }
+
     .topic-cards {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
-      padding: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-    }
-
-    .topic-row.open .topic-cards {
-      max-height: 200px;
       padding: 0 1.2rem 1.2rem 1.2rem;
     }
 
@@ -196,10 +199,6 @@
         grid-template-columns: 1fr;
         gap: 0.8rem;
       }
-
-      .topic-row.open .topic-cards {
-        max-height: 500px;
-      }
     }
 
     @media (max-width: 600px) {
@@ -214,10 +213,6 @@
 
       .topic-header {
         padding: 1rem;
-      }
-
-      .topic-row.open .topic-cards {
-        max-height: 600px;
       }
     }
   </style>
@@ -234,28 +229,31 @@
         <div class="topic-title">⏳ 1. Die Geschichtsepochen</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
-        <a href="blaetter/Blatt01.jpg" class="card reading-card" target="_blank">
-          <span class="card-icon">📖</span>
-          <div class="card-content">
-            <div class="card-label">Lesetext</div>
-            <div class="card-title">Blatt zum Lesen</div>
-          </div>
-        </a>
-        <a href="Blatt1.html" class="card worksheet-card">
-          <span class="card-icon">✏️</span>
-          <div class="card-content">
-            <div class="card-label">Aufgaben</div>
-            <div class="card-title">Arbeitsblatt</div>
-          </div>
-        </a>
-        <a href="Loesung1.html" class="card solution-card">
-          <span class="card-icon">✅</span>
-          <div class="card-content">
-            <div class="card-label">Antworten</div>
-            <div class="card-title">Lösungen</div>
-          </div>
-        </a>
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards-wrapper">
+        <div class="topic-cards">
+          <a href="blaetter/Blatt01.jpg" class="card reading-card" target="_blank">
+            <span class="card-icon">📖</span>
+            <div class="card-content">
+              <div class="card-label">Lesetext</div>
+              <div class="card-title">Blatt zum Lesen</div>
+            </div>
+          </a>
+          <a href="Blatt1.html" class="card worksheet-card">
+            <span class="card-icon">✏️</span>
+            <div class="card-content">
+              <div class="card-label">Aufgaben</div>
+              <div class="card-title">Arbeitsblatt</div>
+            </div>
+          </a>
+          <a href="Loesung1.html" class="card solution-card">
+            <span class="card-icon">✅</span>
+            <div class="card-content">
+              <div class="card-label">Antworten</div>
+              <div class="card-title">Lösungen</div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -265,7 +263,8 @@
         <div class="topic-title">🏇 2. Das Ritterturnier</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards">
         <div class="card reading-card" style="opacity: 0.5; cursor: not-allowed;">
           <span class="card-icon">📖</span>
           <div class="card-content">
@@ -296,7 +295,8 @@
         <div class="topic-title">⚔️ 3. Die Ausbildung zum Ritter</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards">
         <a href="blaetter/Blatt03.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
           <div class="card-content">
@@ -327,7 +327,8 @@
         <div class="topic-title">🛡️ 4. Der Page und der Knappe</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards">
         <a href="blaetter/Blatt04.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
           <div class="card-content">
@@ -358,7 +359,8 @@
         <div class="topic-title">🏰 5. Leben auf der Burg</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards">
         <a href="blaetter/Blatt05.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
           <div class="card-content">
@@ -389,7 +391,8 @@
         <div class="topic-title">👸 6. Frauen im Mittelalter</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards">
         <a href="blaetter/Blatt06.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
           <div class="card-content">
@@ -420,7 +423,8 @@
         <div class="topic-title">🎨 7. Das Wappen</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards">
         <a href="blaetter/Blatt07.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
           <div class="card-content">
@@ -451,7 +455,8 @@
         <div class="topic-title">🍽️ 8. Der Rittersaal</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards">
         <a href="blaetter/Blatt08.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
           <div class="card-content">
@@ -482,7 +487,8 @@
         <div class="topic-title">🛏️ 9. Das Schlafzimmer</div>
         <span class="topic-icon">▼</span>
       </div>
-      <div class="topic-cards">
+      <div class="topic-cards-wrapper">
+        <div class="topic-cards">
         <a href="blaetter/Blatt09.jpg" class="card reading-card" target="_blank">
           <span class="card-icon">📖</span>
           <div class="card-content">
@@ -504,6 +510,7 @@
             <div class="card-title">Lösungen</div>
           </div>
         </a>
+        </div>
       </div>
     </div>
 
